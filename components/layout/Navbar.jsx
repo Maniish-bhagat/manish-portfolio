@@ -88,12 +88,12 @@ export default function Navbar() {
             onClick={() => setActiveSection('hero')}
             className="flex items-center gap-2.5 group"
           >
-            <div className="relative w-9 h-9 rounded-xl overflow-hidden border border-[#292929] bg-[#141414] group-hover:border-[#58A6FF]/60 transition-colors shadow-sm">
+            <div className="relative w-9 h-9 rounded-full overflow-hidden border border-[#292929] bg-[#141414] group-hover:border-[#58A6FF]/60 transition-colors shadow-sm">
               <Image
-                src="/icons/icon.png"
-                alt="Manish Bhagat Icon"
+                src="/images/profile/manish-nav-avatar.png"
+                alt="Manish Bhagat Avatar"
                 fill
-                className="object-cover"
+                className="object-cover object-top"
               />
             </div>
             <span className="font-heading font-bold text-base sm:text-lg text-[#58A6FF] tracking-tight">
