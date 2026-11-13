@@ -10,12 +10,19 @@ export const metadata = {
   description: 'Personal developer portfolio of Manish Bhagat, CS & Engineering candidate specializing in Full-Stack Web Development, Data Structures & Algorithms, and modern software engineering.',
   keywords: ['Manish Bhagat', 'Software Developer', 'Full-Stack Developer', 'Computer Science', 'React', 'Next.js', 'Node.js', 'Portfolio'],
   authors: [{ name: 'Manish Bhagat' }],
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/icon.png',
+    apple: '/icon.png',
+  },
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className="dark selection:bg-[#58A6FF] selection:text-[#090909]">
       <head>
+        <link rel="icon" href="/icon.png" type="image/png" />
+        <link rel="apple-touch-icon" href="/icon.png" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
