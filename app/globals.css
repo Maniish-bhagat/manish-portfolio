@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    --font-outfit: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: #090909;
+    color: #F5F5F5;
+    font-family: var(--font-inter);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+  }
+
+  /* Subtle Top-Center Ambient Glow */
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 100vh;
+    background: radial-gradient(
+      circle at 50% 0%,
+      rgba(255, 255, 255, 0.10),
+      transparent 38%
+    );
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #090909;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #292929;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3F3F46;
+}
+
+/* Global Text Selection Override */
+*::selection,
+::selection {
+  background-color: #58A6FF !important;
+  color: #090909 !important;
+}
+
+*::-moz-selection,
+::-moz-selection {
+  background-color: #58A6FF !important;
+  color: #090909 !important;
+}
+
+/* Reduced motion accessibility check */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

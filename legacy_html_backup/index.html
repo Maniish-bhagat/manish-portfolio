@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Alex Chen | CS Final Year Student & Software Engineer Portfolio</title>
+  <meta name="description"
+    content="Portfolio of Alex Chen, Final Year Computer Science Student specializing in Full-Stack Systems, AI/ML, and Software Architecture.">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Particle Background Canvas -->
+  <canvas id="particleCanvas"></canvas>
+
+  <!-- Navigation Bar -->
+  <header class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-bracket">&lt;</span>
+        <span class="logo-name">Alex.Dev</span>
+        <span class="logo-bracket">/&gt;</span>
+      </a>
+
+      <nav class="nav-menu" id="navMenu">
+        <a href="#about" class="nav-link"><i class="fa-solid fa-user-gear"></i> About</a>
+        <a href="#skills" class="nav-link"><i class="fa-solid fa-code"></i> CS Matrix</a>
+        <a href="#projects" class="nav-link"><i class="fa-solid fa-laptop-code"></i> Projects</a>
+        <a href="#certifications" class="nav-link"><i class="fa-solid fa-certificate"></i> Certs</a>
+        <a href="#experience" class="nav-link"><i class="fa-solid fa-timeline"></i> Timeline</a>
+        <a href="#resume" class="nav-link"><i class="fa-solid fa-file-lines"></i> Resume</a>
+        <a href="#contact" class="nav-link btn-nav-cta"><i class="fa-solid fa-paper-plane"></i> Connect</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-toggle-btn" aria-label="Toggle Theme">
+          <i class="fa-solid fa-moon moon-icon"></i>
+          <i class="fa-solid fa-sun sun-icon"></i>
+        </button>
+        <button id="mobileMenuBtn" class="mobile-menu-btn" aria-label="Toggle Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section class="hero-section" id="hero">
+      <div class="hero-container">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="pulse-dot"></span>
+            <span>Graduating 2026 • Open for Full-Time Roles & Research</span>
+          </div>
+
+          <h1 class="hero-title">
+            Hi, I'm <span class="gradient-text">Alex Chen</span>
+            <br>
+            <span class="typewriter-text" id="typewriter"></span>
+          </h1>
+
+          <p class="hero-subtitle">
+            Final Year Computer Science & Engineering student passionate about engineering high-concurrency
+            microservices, scalable full-stack applications, distributed algorithms, and applied machine learning.
+          </p>
+
+          <div class="hero-cta-group">
+            <a href="#projects" class="btn btn-primary">
+              <i class="fa-solid fa-rocket"></i> Explore Projects
+            </a>
+            <a href="#resume" class="btn btn-secondary">
+              <i class="fa-solid fa-file-pdf"></i> View Resume
+            </a>
+            <a href="#contact" class="btn btn-outline">
+              <i class="fa-solid fa-comments"></i> Let's Connect
+            </a>
+          </div>
+
+          <div class="hero-quick-stats">
+            <div class="stat-card">
+              <span class="stat-number">3.92</span>
+              <span class="stat-label">Cumulative GPA</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">12+</span>
+              <span class="stat-label">Production & Research Projects</span>
+            </div>
+            <div class="stat-card">
+              <span class="stat-number">500+</span>
+              <span class="stat-label">LeetCode & Algorithmic Problems</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Terminal Widget -->
+        <div class="terminal-container">
+          <div class="terminal-header">
+            <div class="terminal-buttons">
+              <span class="btn-dot close"></span>
+              <span class="btn-dot minimize"></span>
+              <span class="btn-dot expand"></span>
+            </div>
+            <div class="terminal-title"><i class="fa-solid fa-terminal"></i> alex@cs-workstation:~</div>
+          </div>
+          <div class="terminal-body" id="terminalBody">
+            <div class="terminal-welcome">
+              <p class="term-dim">CS Terminal v2.6.0 (x86_64-pc-linux-gnu)</p>
+              <p class="term-dim">Type or click a command preset below to inspect profile:</p>
+            </div>
+
+            <div class="terminal-presets">
+              <button class="term-preset-btn" data-cmd="cat bio.json">cat bio.json</button>
+              <button class="term-preset-btn" data-cmd="system_info">system_info</button>
+              <button class="term-preset-btn" data-cmd="ls skills/">ls skills/</button>
+              <button class="term-preset-btn" data-cmd="npm test projects">npm test projects</button>
+            </div>
+
+            <div class="terminal-output" id="terminalOutput">
+              <!-- Dynamically populated -->
+            </div>
+
+            <div class="terminal-input-line">
+              <span class="term-prompt">alex@cs-workstation:~$</span>
+              <input type="text" id="terminalInput" placeholder="type command (e.g. help, bio, skills)..."
+                autocomplete="off">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section class="about-section" id="about">
+      <div class="section-container">
+        <div class="section-header center">
+          <span class="section-tag"><i class="fa-solid fa-user-astronaut"></i> Background</span>
+          <h2 class="section-title">About Me</h2>
+          <p class="section-subtitle">Bridging theoretical computer science with pragmatic software craftsmanship.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-avatar-card">
+            <div class="avatar-wrapper">
+              <img src="assets/student_avatar.jpg" alt="Alex Chen CS Student Avatar" class="avatar-img">
+              <div class="avatar-glow"></div>
+            </div>
+            <div class="avatar-status">
+              <i class="fa-solid fa-circle-check status-icon"></i>
+              <div>
+                <strong>Final Year CS Candidate</strong>
+                <p>Department of Computer Science & Engineering</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="about-bio-card">
+            <h3>Architecting robust code & exploring intelligent systems</h3>
+            <p>
+              As a final-year CS undergrad, my journey has been driven by deep curiosity about how software works
+              beneath the abstractions—from memory allocation and thread synchronization to distributed consensus and
+              neural network optimization.
+            </p>
+            <p>
+              Throughout my academic career, I've served as a Research Assistant in AI Systems, interned as a Backend
+              Engineer working with high-throughput APIs, and competed in competitive programming hackathons.
+            </p>
+
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <i class="fa-solid fa-brain highlight-icon"></i>
+                <div>
+                  <h4>Capstone Focus</h4>
+                  <p>AI-Powered Code Auditing & Static Analysis using LLM-guided Abstract Syntax Trees.</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <i class="fa-solid fa-microchip highlight-icon"></i>
+                <div>
+                  <h4>Systems Interest</h4>
+                  <p>Distributed Caching, Microservices Observability, and Concurrency Patterns.</p>
+                </div>
+              </div>
+              <div class="highlight-item">
+                <i class="fa-solid fa-graduation-cap highlight-icon"></i>
+                <div>
+                  <h4>Academic Standing</h4>
+                  <p>Dean's Honor List (All Semesters), President of CS Coding Society.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CS Skill Matrix Section -->
+    <section class="skills-section" id="skills">
+      <div class="section-container">
+        <div class="section-header center">
+          <span class="section-tag"><i class="fa-solid fa-cubes"></i> Tech Stack</span>
+          <h2 class="section-title">Computer Science Competency Matrix</h2>
+          <p class="section-subtitle">A comprehensive breakdown of technical proficiencies, frameworks, and CS
+            fundamentals.</p>
+        </div>
+
+        <div class="skills-tabs">
+          <button class="skill-tab active" data-category="all"><i class="fa-solid fa-layer-group"></i> All
+            Stack</button>
+          <button class="skill-tab" data-category="languages"><i class="fa-solid fa-code"></i> Languages</button>
+          <button class="skill-tab" data-category="systems"><i class="fa-solid fa-server"></i> Systems &
+            Backend</button>
+          <button class="skill-tab" data-category="frontend"><i class="fa-solid fa-desktop"></i> Web & Frontend</button>
+          <button class="skill-tab" data-category="aiml"><i class="fa-solid fa-robot"></i> AI & Data Science</button>
+          <button class="skill-tab" data-category="core"><i class="fa-solid fa-book-bookmark"></i> CS
+            Fundamentals</button>
+        </div>
+
+        <div class="skills-grid" id="skillsGrid">
+          <!-- Dynamically Rendered via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Showcase Section -->
+    <section class="projects-section" id="projects">
+      <div class="section-container">
+        <div class="section-header">
+          <div>
+            <span class="section-tag"><i class="fa-solid fa-diagram-project"></i> Portfolio Showcase</span>
+            <h2 class="section-title">Featured Engineering Projects</h2>
+            <p class="section-subtitle">Real-world applications, open-source tools, and research implementations.</p>
+          </div>
+
+          <div class="projects-controls">
+            <div class="search-box">
+              <i class="fa-solid fa-magnifying-glass search-icon"></i>
+              <input type="text" id="projectSearch" placeholder="Search projects by tech (e.g. PyTorch, Go, React)...">
+            </div>
+          </div>
+        </div>
+
+        <div class="project-filters">
+          <button class="filter-btn active" data-filter="all">All Projects</button>
+          <button class="filter-btn" data-filter="aiml">AI / ML</button>
+          <button class="filter-btn" data-filter="systems">Systems & Cloud</button>
+          <button class="filter-btn" data-filter="fullstack">Full-Stack Web</button>
+        </div>
+
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Dynamically Rendered Project Cards -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Certifications & Research Publications Section -->
+    <section class="certifications-section" id="certifications">
+      <div class="section-container">
+        <div class="section-header center">
+          <span class="section-tag"><i class="fa-solid fa-certificate"></i> Verified Credentials</span>
+          <h2 class="section-title">Certifications & Research Publications</h2>
+          <p class="section-subtitle">Industry certifications, specialized coursework, and published research papers.
+          </p>
+        </div>
+
+        <div class="certs-grid">
+          <!-- Certification 1 -->
+          <div class="cert-card glass-card">
+            <div class="cert-icon"><i class="fa-brands fa-aws"></i></div>
+            <div class="cert-info">
+              <h3>AWS Certified Solutions Architect – Associate</h3>
+              <p class="cert-issuer">Amazon Web Services • Issued Dec 2024</p>
+              <span class="cert-badge">Credential ID: AWS-7890214</span>
+            </div>
+          </div>
+
+          <!-- Certification 2 -->
+          <div class="cert-card glass-card">
+            <div class="cert-icon"><i class="fa-solid fa-brain"></i></div>
+            <div class="cert-info">
+              <h3>Deep Learning Specialization</h3>
+              <p class="cert-issuer">DeepLearning.AI / Coursera • Issued Oct 2024</p>
+              <span class="cert-badge">Neural Networks & Convolutional Models</span>
+            </div>
+          </div>
+
+          <!-- Certification 3 -->
+          <div class="cert-card glass-card">
+            <div class="cert-icon"><i class="fa-solid fa-cloud"></i></div>
+            <div class="cert-info">
+              <h3>CKAD: Certified Kubernetes Application Developer</h3>
+              <p class="cert-issuer">Linux Foundation • Issued Mar 2025</p>
+              <span class="cert-badge">Container Orchestration</span>
+            </div>
+          </div>
+
+          <!-- Research Publication -->
+          <div class="cert-card glass-card research-card">
+            <div class="cert-icon research"><i class="fa-solid fa-book-open"></i></div>
+            <div class="cert-info">
+              <h3>Research Paper: AST Vectorization in LLM Code Audit</h3>
+              <p class="cert-issuer">IEEE International Conference on Software Engineering (ICSE 2025 Workshop)</p>
+              <span class="cert-badge highlight">Co-Author • Peer-Reviewed Publication</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Project Detail Modal -->
+    <div class="modal-backdrop" id="projectModal">
+      <div class="modal-container">
+        <button class="modal-close" id="modalCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+        <div class="modal-content" id="modalContent">
+          <!-- Dynamically injected project detail -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Timeline & Experience Section -->
+    <section class="experience-section" id="experience">
+      <div class="section-container">
+        <div class="section-header center">
+          <span class="section-tag"><i class="fa-solid fa-route"></i> Career Track</span>
+          <h2 class="section-title">Experience & Academic Milestones</h2>
+          <p class="section-subtitle">My professional internships, research contributions, and leadership achievements.
+          </p>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fa-solid fa-briefcase"></i></div>
+            <div class="timeline-content glass-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Jun 2025 - Aug 2025</span>
+                <span class="timeline-tag">Software Engineering Intern</span>
+              </div>
+              <h3 class="timeline-title">CloudScale Systems Corp.</h3>
+              <p class="timeline-desc">
+                Architected high-concurrency microservice endpoints in Go and Redis to handle real-time metric streams.
+                Reduced P99 API response latency by 34% through efficient connection pooling and payload serialization
+                optimizations.
+              </p>
+              <div class="timeline-badges">
+                <span>Go</span>
+                <span>gRPC</span>
+                <span>Redis</span>
+                <span>Docker</span>
+                <span>Prometheus</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fa-solid fa-flask"></i></div>
+            <div class="timeline-content glass-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Jan 2025 - May 2025</span>
+                <span class="timeline-tag">Undergraduate Research Assistant</span>
+              </div>
+              <h3 class="timeline-title">University Intelligent Systems Lab</h3>
+              <p class="timeline-desc">
+                Co-authored research on LLM AST parsing efficiency. Developed static analysis pipeline comparing
+                traditional compiler parser trees against transformer attention matrices for vulnerability
+                classification.
+              </p>
+              <div class="timeline-badges">
+                <span>Python</span>
+                <span>PyTorch</span>
+                <span>Tree-sitter</span>
+                <span>AST</span>
+                <span>LaTeX</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fa-solid fa-trophy"></i></div>
+            <div class="timeline-content glass-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Nov 2024</span>
+                <span class="timeline-tag">1st Place Winner</span>
+              </div>
+              <h3 class="timeline-title">National Inter-University Hackathon</h3>
+              <p class="timeline-desc">
+                Led a team of 4 to construct "ResCU", a peer-to-peer decentralized mesh network communication app for
+                disaster response using WebSockets, WebRTC, and local Bluetooth LE fallback.
+              </p>
+              <div class="timeline-badges">
+                <span>TypeScript</span>
+                <span>WebRTC</span>
+                <span>Node.js</span>
+                <span>PWA</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="timeline-content glass-card">
+              <div class="timeline-meta">
+                <span class="timeline-date">Aug 2022 - Present</span>
+                <span class="timeline-tag">B.Tech Computer Science</span>
+              </div>
+              <h3 class="timeline-title">State University of Technology</h3>
+              <p class="timeline-desc">
+                Maintaining 3.92 GPA. Lead Teaching Assistant for Object-Oriented Programming (CS201) and active Lead of
+                the ACM Student Chapter organizing coding bootcamps for 200+ students.
+              </p>
+              <div class="timeline-badges">
+                <span>Algorithms</span>
+                <span>OS</span>
+                <span>Networks</span>
+                <span>System Architecture</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section class="resume-section" id="resume">
+      <div class="section-container">
+        <div class="section-header center">
+          <span class="section-tag"><i class="fa-solid fa-id-card"></i> Documentation</span>
+          <h2 class="section-title">Interactive Resume & Credentials</h2>
+          <p class="section-subtitle">Download a clean copy or inspect academic transcripts & certifications.</p>
+        </div>
+
+        <div class="resume-wrapper glass-card">
+          <div class="resume-header">
+            <div class="resume-user-info">
+              <i class="fa-solid fa-file-code resume-icon"></i>
+              <div>
+                <h3>Alex Chen - Software Engineering Resume (2026)</h3>
+                <p>Updated July 2026 • Verified PDF Version</p>
+              </div>
+            </div>
+            <div class="resume-actions">
+              <button class="btn btn-primary" id="downloadResumeBtn">
+                <i class="fa-solid fa-download"></i> Download Resume (PDF)
+              </button>
+              <button class="btn btn-secondary" id="previewResumeBtn">
+                <i class="fa-solid fa-eye"></i> Quick View
+              </button>
+            </div>
+          </div>
+
+          <div class="resume-preview-box" id="resumePreviewBox">
+            <div class="resume-sheet">
+              <div class="sheet-header">
+                <h2>ALEX CHEN</h2>
+                <p class="sheet-contact">
+                  alex.chen.cs2026@email.com • +1 (555) 019-2831 • github.com/alexchen-cs • linkedin.com/in/alexchen-dev
+                </p>
+              </div>
+
+              <div class="sheet-section">
+                <h4 class="sheet-title">EDUCATION</h4>
+                <div class="sheet-item">
+                  <div class="item-header">
+                    <strong>B.S. in Computer Science & Engineering</strong>
+                    <span>Graduation: May 2026</span>
+                  </div>
+                  <p class="item-sub">State University of Technology • GPA: 3.92 / 4.0 (Dean’s Honor List)</p>
+                  <p class="item-detail"><em>Relevant Coursework:</em> Data Structures & Algorithms, Distributed
+                    Systems, Computer Networks, Operating Systems, Machine Learning, Database Management Systems,
+                    Compiler Design.</p>
+                </div>
+              </div>
+
+              <div class="sheet-section">
+                <h4 class="sheet-title">TECHNICAL SKILLS</h4>
+                <p class="sheet-detail"><strong>Languages:</strong> Python, C++, Java, JavaScript, TypeScript, SQL, Go,
+                  HTML5/CSS3</p>
+                <p class="sheet-detail"><strong>Frameworks & Tools:</strong> React, Node.js, Express, PyTorch, Docker,
+                  Git, Redis, PostgreSQL, Linux/Unix</p>
+                <p class="sheet-detail"><strong>Concepts:</strong> Microservices Architecture, RESTful APIs, OOP, Design
+                  Patterns, CI/CD, Algorithmic Optimization</p>
+              </div>
+
+              <div class="sheet-section">
+                <h4 class="sheet-title">FEATURED PROJECTS</h4>
+                <div class="sheet-item">
+                  <strong>AI Code Auditor & Bug Detector</strong> | <em>Python, PyTorch, AST, React</em>
+                  <ul>
+                    <li>Engineered an LLM-assisted static code analysis tool detecting security anti-patterns in C++ and
+                      Python.</li>
+                    <li>Achieved 94.6% precision score on synthetic test suites with 4x faster scan speeds than standard
+                      linters.</li>
+                  </ul>
+                </div>
+                <div class="sheet-item">
+                  <strong>Distributed Cloud System Monitor</strong> | <em>Go, Docker, WebSockets, Chart.js</em>
+                  <ul>
+                    <li>Created a real-time cluster health agent tracking memory, CPU telemetry, and HTTP traffic
+                      metrics.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Connect & Contact Section -->
+    <section class="contact-section" id="contact">
+      <div class="section-container">
+        <div class="section-header center">
+          <span class="section-tag"><i class="fa-solid fa-paper-plane"></i> Reach Out</span>
+          <h2 class="section-title">Let's Connect & Build Together</h2>
+          <p class="section-subtitle">Interested in hiring, technical collaboration, or discussing CS research? Send a
+            message or connect directly.</p>
+        </div>
+
+        <div class="contact-grid">
+          <!-- Social Cards & Quick Links -->
+          <div class="contact-info-cards">
+            <div class="contact-card glass-card">
+              <div class="card-icon github"><i class="fa-brands fa-github"></i></div>
+              <div class="card-details">
+                <h4>GitHub Profile</h4>
+                <p>@alexchen-cs (15+ Repos, 200+ Commits)</p>
+              </div>
+              <a href="https://github.com" target="_blank" rel="noopener" class="card-btn">Visit <i
+                  class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="contact-card glass-card">
+              <div class="card-icon linkedin"><i class="fa-brands fa-linkedin"></i></div>
+              <div class="card-details">
+                <h4>LinkedIn Network</h4>
+                <p>in/alexchen-dev (500+ Connections)</p>
+              </div>
+              <a href="https://linkedin.com" target="_blank" rel="noopener" class="card-btn">Connect <i
+                  class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <div class="contact-card glass-card">
+              <div class="card-icon email"><i class="fa-solid fa-envelope"></i></div>
+              <div class="card-details">
+                <h4>Direct Email</h4>
+                <p id="emailText">alex.chen.cs2026@email.com</p>
+              </div>
+              <button class="card-btn copy-btn" id="copyEmailBtn" data-copy="alex.chen.cs2026@email.com">
+                <i class="fa-solid fa-copy"></i> Copy
+              </button>
+            </div>
+
+            <div class="contact-card glass-card">
+              <div class="card-icon leetcode"><i class="fa-solid fa-code"></i></div>
+              <div class="card-details">
+                <h4>LeetCode & Coding Profile</h4>
+                <p>Knight Rating (1890 Max) • 520+ Solved</p>
+              </div>
+              <a href="https://leetcode.com" target="_blank" rel="noopener" class="card-btn">View <i
+                  class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+
+            <!-- Interactive Coffee Chat Widget -->
+            <div class="coffee-chat-box glass-card">
+              <div class="chat-box-header">
+                <i class="fa-solid fa-mug-hot chat-icon"></i>
+                <div>
+                  <h4>Quick 15-Min Coffee Chat</h4>
+                  <p>Schedule a quick virtual tech catchup!</p>
+                </div>
+              </div>
+              <div class="chat-slots">
+                <button class="slot-btn" data-time="Tue 2:00 PM">Tue 2:00 PM</button>
+                <button class="slot-btn" data-time="Thu 4:30 PM">Thu 4:30 PM</button>
+                <button class="slot-btn" data-time="Fri 11:00 AM">Fri 11:00 AM</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Contact Form -->
+          <div class="contact-form-container glass-card">
+            <h3>Send Me a Message</h3>
+            <form id="contactForm" class="contact-form">
+              <div class="form-group">
+                <label for="formName">Your Name</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-user input-icon"></i>
+                  <input type="text" id="formName" placeholder="e.g. Sarah Jenkins" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="formEmail">Your Email</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-envelope input-icon"></i>
+                  <input type="email" id="formEmail" placeholder="s.jenkins@techfirm.com" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="formSubject">Subject</label>
+                <div class="input-wrapper">
+                  <i class="fa-solid fa-heading input-icon"></i>
+                  <input type="text" id="formSubject" placeholder="Software Engineering Role / Project Inquiry"
+                    required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="formMessage">Message</label>
+                <div class="input-wrapper text-area-wrapper">
+                  <i class="fa-solid fa-comment-dots input-icon"></i>
+                  <textarea id="formMessage" rows="5"
+                    placeholder="Hi Alex, I came across your portfolio and wanted to discuss..." required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block" id="formSubmitBtn">
+                <i class="fa-solid fa-paper-plane"></i> Send Message
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo">
+          <span class="logo-bracket">&lt;</span>
+          <span class="logo-name">Alex.Dev</span>
+          <span class="logo-bracket">/&gt;</span>
+        </a>
+        <p>Final Year Computer Science & Engineering Student Portfolio</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="#about">About</a>
+        <a href="#skills">CS Matrix</a>
+        <a href="#projects">Projects</a>
+        <a href="#experience">Timeline</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Alex Chen. Designed & built with HTML5, CSS3 & JavaScript.</p>
+        <div class="footer-status">
+          <span class="status-dot"></span> System Status: All Systems Operational
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification System -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- Custom JavaScript App -->
+  <script src="app.js"></script>
+</body>
+
+</html>
