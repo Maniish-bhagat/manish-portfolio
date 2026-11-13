@@ -6,7 +6,7 @@ export const viewport = {
 };
 
 export const metadata = {
-  title: 'Manish Bhagat | Computer Science & Engineering Student & Software Developer',
+  title: 'Manish Bhagat Portfolio',
   description: 'Personal developer portfolio of Manish Bhagat, CS & Engineering candidate specializing in Full-Stack Web Development, Data Structures & Algorithms, and modern software engineering.',
   keywords: ['Manish Bhagat', 'Software Developer', 'Full-Stack Developer', 'Computer Science', 'React', 'Next.js', 'Node.js', 'Portfolio'],
   authors: [{ name: 'Manish Bhagat' }],
