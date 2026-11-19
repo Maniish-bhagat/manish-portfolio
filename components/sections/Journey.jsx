@@ -20,6 +20,7 @@ export default function Journey() {
       description: 'Focused extensively on modern Web Development (React, Node.js, Express, MongoDB) alongside rigorous practice of Data Structures & Algorithms using Java. Built full-stack applications and cloned real-world software.',
       tags: ['React', 'Node.js', 'DSA with Java', 'REST APIs', 'MongoDB']
     },
+        // particiapted in SIH smart india Hackathon..
     {
       year: '2025',
       title: 'Hackathon Team Leader - SIH & Hacktopus',
